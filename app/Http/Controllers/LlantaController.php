@@ -38,7 +38,7 @@ class LlantaController extends Controller
         Llanta::create($request->all());
 
         return redirect()->route('llanta.index')
-            ->with('success', 'created successfully.');
+            ->with('success', 'creado.');
     }
 
     /**
@@ -69,7 +69,7 @@ class LlantaController extends Controller
         $llantas->update($request->all());
 
         return redirect()->route('llanta.index')
-            ->with('success', 'updated successfully.');
+            ->with('success', 'editado.');
     }
 
     /**
@@ -81,9 +81,24 @@ class LlantaController extends Controller
         $llantas->delete();
 
         return redirect()->route('llanta.index')
-            ->with('success', ' deleted successfully');
+            ->with('danger', ' eliminado');
     }
 
+
+    public function reciclaje()
+    {
+        $llantas = Llanta::onlyTrashed()->get();
+        return view('reciclaje', compact('llantas'));
+    }
+    public function restaure(string $id)
+    {
+       
+        $llantas = Llanta::withTrashed()->findOrFail($id);       
+        $llantas->restore();
+
+        return redirect()->route('llanta.index')
+            ->with('success', ' recuperado');
+    }
 
     public function edit($id)
     {

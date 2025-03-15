@@ -129,12 +129,11 @@ table.table .avatar {
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>LLantera <b>El Gallo</b></h2>
+						<h2>LLantera <b>El Gallo Eliminados</b></h2>
 					</div>
 					<div class="col-sm-6">
 						<!-- <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar Llanta</span></a> -->
-                        <a class="btn btn-success" href={{ route('create') }}><i class="material-icons">&#xE147;</i> <span>Agregar Llanta</span></a>
-						<a class="btn btn-danger" href={{ route('llanta.reciclaje') }}><i class="material-icons">&#xE147;</i> <span>Eliminados</span></a>						
+                        <a class="btn btn-success" href={{ route('create') }}><i class="material-icons">&#xE147;</i> <span>Agregar Llanta</span></a>						
 					</div>
 				</div>
 			</div>
@@ -153,20 +152,18 @@ table.table .avatar {
                             <td>{{ $llan->nombre }}</td>
                             <td>{{ $llan->fabricante }}</td>
                             <td>{{ $llan->calificacion }}</td>
-                            <td><a href="{{ route('llanta.edit', $llan->id) }}" class="btn btn-warning btn-sm">Editar</a>
-							<form action="{{ route('llanta.destroy', $llan->id) }}" method="post">
+                            <td>
+							<form action="{{ route('llanta.restaure', $llan->id) }}" method="post">
                                         @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        @method('POST')
+                                        <button type="submit" class="btn btn-success btn-sm">Recuperar</button>
                             </form>
 						</td>
                         </tr>
                     @endforeach
 				</tbody>
 			</table>
-			<div class="clearfix">
-                {!! $llantas->links() !!}
-			</div>
+
 		</div>
 	</div>        
 </div>

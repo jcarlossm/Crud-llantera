@@ -23,9 +23,9 @@ Route::get('/', [LlantaController::class, 'index'])->name('llanta.index');
 
 Route::get('/create', LlantaController::class . '@create')->name('create');
 Route::get('/store', LlantaController::class .'@store')->name('llanta.store');
-// // returns a page that shows a full post
-// Route::get('/{llanta}', LlantaController::class .'@show')->name('posts.show');
-// // returns the form for editing a post
+
 Route::get('/edit/{llanta}/edit', LlantaController::class .'@edit')->name('llanta.edit');
 Route::put('/update/{llanta}', LlantaController::class .'@update')->name('llanta.update');
 Route::delete('/delete/{llanta}', LlantaController::class .'@destroy')->name('llanta.destroy');
+Route::get('/reciclaje', LlantaController::class .'@reciclaje')->name('llanta.reciclaje');
+Route::post('/restaure/{llanta}/restaure', LlantaController::class .'@restaure')->withTrashed()->name('llanta.restaure');
