@@ -23,7 +23,6 @@ Route::get('/', [LlantaController::class, 'index'])->name('llanta.index');
 
 Route::get('/create', LlantaController::class . '@create')->name('create');
 Route::get('/store', LlantaController::class .'@store')->name('llanta.store');
-
 Route::get('/edit/{llanta}/edit', LlantaController::class .'@edit')->name('llanta.edit');
 Route::put('/update/{llanta}', LlantaController::class .'@update')->name('llanta.update');
 Route::delete('/delete/{llanta}', LlantaController::class .'@destroy')->name('llanta.destroy');

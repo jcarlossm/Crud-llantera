@@ -155,7 +155,6 @@ table.table .avatar {
                             <td>
 							<form action="{{ route('llanta.restaure', $llan->id) }}" method="post">
                                         @csrf
-                                        @method('POST')
                                         <button type="submit" class="btn btn-success btn-sm">Recuperar</button>
                             </form>
 						</td>
